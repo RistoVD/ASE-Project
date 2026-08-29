@@ -1,0 +1,31 @@
+<div class="hero bg-base-200 min-h-screen">
+  @if (!registerMode()) {
+
+    <div class="hero-content text-center">
+      <div class="flex flex-col items-center">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#000000" class="size-42 text-primary">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M2 9h4v4H2zm8 0h4v10h-4z"/>
+            <path d="M18 19V9a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v8a2 2 0 0 0 2 2h2"/>
+            <circle cx="8" cy="19" r="2"/><path d="M10 19h12v-2"/>
+          </g>
+        </svg>
+        <h1 class="text-5xl font-bold">Welcome</h1>
+        <p class="py-6">let's create an account </p>
+        <div class="flex items-center gap-3">
+          <button (click)="showRegister(true)" class = "btn btn-primary btin-lg">Register</button>
+          <button class = "btn btn-info btin-lg">Learn more</button>
+
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="w-full text-2xl text-center flex justify-center">
+      <app-register [membersFromHome]="membersFromApp" class="w-full"
+      (cancelRegister)="showRegister($event)"
+      />
+    </div>
+
+  }
+</div>
