@@ -12,6 +12,7 @@
           </g>
         </svg>
         <h1 class="text-5xl font-bold">Welcome</h1>
+
         <p class="py-6">let's create an account </p>
         <div class="flex items-center gap-3">
           <button (click)="showRegister(true)" class = "btn btn-primary btin-lg">Register</button>
@@ -22,7 +23,7 @@
     </div>
   } @else {
     <div class="w-full text-2xl text-center flex justify-center">
-      <app-register [membersFromHome]="membersFromApp" class="w-full"
+      <app-register class="w-full"
       (cancelRegister)="showRegister($event)"
       />
     </div>

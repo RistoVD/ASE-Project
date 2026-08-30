@@ -6,15 +6,18 @@ import { AccountService } from '../core/services/account-service';
 import { Owners } from '../features/owners/owners';
 import { Home } from '../features/home/home';
 import { User } from '../types/user';
+import { Router, RouterOutlet } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [Nav, Owners, Home],
+  imports: [Nav, RouterOutlet, NgClass],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App implements OnInit {
   private accountService = inject(AccountService);
+  protected router = inject(Router)
   private http = inject(HttpClient);
   protected title = 'StallR';
   protected members = signal<User[]>([]);

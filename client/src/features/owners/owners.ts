@@ -1,29 +1,36 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, Input, signal } from '@angular/core';
 import { Nav } from '../../layout/nav/nav';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { User } from '../../types/user';
+import { Owner, RegisterOwner } from '../../types/owner';
 
 @Component({
   selector: 'app-owners',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './owners.html',
   styleUrl: './owners.css',
 })
 export class Owners {
   private http = inject(HttpClient);
   protected title = 'StallR';
+  protected creds = {} as RegisterOwner;
 
-  protected owners = signal<any>([]);
-  async setOwners() {  this.owners.set(await this.getOwners())}
-
-
+  protected owners = signal<Owner[]>([]);
+  async setOwners() {
+    this.owners.set(await this.getOwners());
+  }
 
   async getOwners() {
     try {
-      return lastValueFrom(this.http.get('http://localhost:5007/api/owner'));
+      return lastValueFrom(this.http.get<Owner[]>('http://localhost:5007/api/owner'));
     } catch (error) {
       console.log(error);
+      throw error;
     }
-    return this.http.get('http://localhost:5007/api/owner');
+  }
+  register() {
+    console.log(this.creds);
   }
 }

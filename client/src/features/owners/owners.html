@@ -12,3 +12,26 @@
     <button class="btn btn-primary" (click)="setOwners()">getowners</button>
   </ul>
 </div>
+
+
+<form #registerForm="ngForm" class="flex flex-col gap-4 w-full" (ngSubmit)="register()">
+
+  <input type="text" class="input w-full" name="displayName"
+         [(ngModel)]="creds.displayName" placeholder="Display name">
+
+  <input class="input w-full"
+         list="membersList"
+         name="friend"
+         [(ngModel)]="creds.friend"
+         placeholder="Type om te zoeken...">
+
+  <datalist id="membersList">
+    @for (member of owners(); track member.id){
+      <option [value]="member.displayName">{{member.displayName}}</option>
+    }
+  </datalist>
+
+  <div class="flex items-center justify-end gap-3">
+    <button class="btn btn-primary" type="submit">Register</button>
+  </div>
+</form>
