@@ -1,7 +1,7 @@
 <div class="card bg-base-100 w1/2 mx-auto p-10 mt-10 shadow-xl">
-  <h1 class="text-3xl text-blue-500">{{title}}!!</h1>
+  <h1 class="text-3xl text-blue-500">data!!</h1>
   <ul class="list">
-    @for (owner of owners(); track owner.id) {
+    @for (owner of owners$ | async; track owner.id) {
       <li class="list-row items-center">
         <img src="/user.png" alt="user avatar" class="size-12 rounded-box">
         <div>
@@ -9,25 +9,24 @@
         </div>
       </li>
     }
-    <button class="btn btn-primary" (click)="setOwners()">getowners</button>
   </ul>
 </div>
 
 
-<form #registerForm="ngForm" class="flex flex-col gap-4 w-full" (ngSubmit)="register()">
+<form #registerForm="ngForm" class="flex flex-col gap-4 w-full">
 
   <input type="text" class="input w-full" name="displayName"
-         [(ngModel)]="creds.displayName" placeholder="Display name">
+          placeholder="Display name">
 
   <input class="input w-full"
          list="membersList"
          name="friend"
-         [(ngModel)]="creds.friend"
+         
          placeholder="Type om te zoeken...">
 
   <datalist id="membersList">
-    @for (member of owners(); track member.id){
-      <option [value]="member.displayName">{{member.displayName}}</option>
+    @for (owner of owners$ |async; track owner.id){
+      <option [value]="owner.displayName">{{owner.displayName}}</option>
     }
   </datalist>
 

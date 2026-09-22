@@ -1,0 +1,16 @@
+# .NET build output
+bin/
+obj/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Visual Studio / Rider
+.vs/
+*.user
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -13,12 +13,13 @@
         <h3 class="text-2xl font-semibold  uppercase">StallR</h3>
       </a>
     </div>
-
+@if(accountService.currentUser();as user){
     <nav class="flex gap-3 my-2 uppercase text-lg text-white">
       <a routerLink="/owners" routerLinkActive="text-accent">Owners</a>
       <a routerLink="/vehicles" routerLinkActive="text-accent">Vehicles</a>
       <a routerLink="/prices" routerLinkActive="text-accent">Prices</a>
     </nav>
+  }
     <div class="flex align-middle ml-auto gap-3">
       @if(accountService.currentUser();as user){
         <div class="dropdown dropdown-end" >

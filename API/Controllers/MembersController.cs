@@ -11,7 +11,6 @@ namespace API.Controllers
     
     public class MembersController(AppDbContext context) : ControllerBase
     {
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers()
         {
@@ -20,7 +19,6 @@ namespace API.Controllers
             return members;
         }
 
-        [Authorize]
         
         [HttpGet("{id}")] // localhost:5001/api/members/bob-id
         public async Task<ActionResult<AppUser>> GetMember(string id)

@@ -20,6 +20,10 @@
         "@schematics/angular:guard": {
           "skipTests": true,
           "path": "src/core/gaurds"
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true,
+          "path": "src/core/resolvers"
         }
       },
       "root": "",
