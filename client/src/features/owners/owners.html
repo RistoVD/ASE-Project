@@ -13,16 +13,13 @@
 </div>
 
 
-<form #registerForm="ngForm" class="flex flex-col gap-4 w-full">
+<form #registerForm="ngForm" class="flex flex-col gap-4 w-full" (ngSubmit)="register(registerForm.value)">
 
   <input type="text" class="input w-full" name="displayName"
+  ngModel
           placeholder="Display name">
 
-  <input class="input w-full"
-         list="membersList"
-         name="friend"
-         
-         placeholder="Type om te zoeken...">
+  
 
   <datalist id="membersList">
     @for (owner of owners$ |async; track owner.id){

@@ -12,7 +12,7 @@ namespace API.Controllers;
 [ApiController]
 public class OwnerController(AppDbContext context) : ControllerBase
 {
-    [HttpPost("registerOwner")]
+    [HttpPost("register")]
     public async Task<ActionResult<Owner>> Register(RegisterOwnerDto registerOwnerDto)
     {
         if (await NameExists(registerOwnerDto.DisplayName)) return BadRequest("Name taken");
